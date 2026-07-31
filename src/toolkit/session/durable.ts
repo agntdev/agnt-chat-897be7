@@ -43,6 +43,7 @@ export interface WorkerEnv {
   BOT_TELEMETRY_URL?: string;
   BOT_TELEMETRY_SECRET?: string;
   BOT_TELEMETRY_SALT?: string;
+  ADMIN_CHAT_ID?: string;
 }
 
 interface Reminder {

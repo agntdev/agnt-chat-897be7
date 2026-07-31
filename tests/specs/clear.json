@@ -7,13 +7,33 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Reset conversation history"
+              "text": "Your chat history is cleared. Start fresh whenever you like."
             }
           }
         ],
         "send": {
           "text": "/clear"
         }
+      }
+    ]
+  }
+  ,
+  {
+    "name": "Clear chat button asks before deleting history",
+    "steps": [
+      {
+        "send": { "callback": "chat:clear" },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          { "method": "editMessageText", "payload": { "text": "Clear your current chat history? This can’t be undone." } }
+        ]
+      },
+      {
+        "send": { "callback": "chat:clear:yes" },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          { "method": "editMessageText", "payload": { "text": "Your chat history is cleared. Start fresh whenever you like." } }
+        ]
       }
     ]
   }

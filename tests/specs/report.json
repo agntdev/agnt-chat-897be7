@@ -1,19 +1,23 @@
 [
   {
-    "name": "/report",
+    "name": "/report starts a report",
     "steps": [
       {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Send abuse report to admin"
-            }
-          }
-        ],
-        "send": {
-          "text": "/report"
-        }
+        "send": { "text": "/report" },
+        "expect": [{ "method": "sendMessage", "payload": { "text": "Tell me what happened in one message, and I’ll send it to the bot owner." } }]
+      }
+    ]
+  },
+  {
+    "name": "report explains when the admin contact is not configured",
+    "steps": [
+      {
+        "send": { "text": "/report" },
+        "expect": [{ "method": "sendMessage", "payload": { "text": "Tell me what happened in one message, and I’ll send it to the bot owner." } }]
+      },
+      {
+        "send": { "text": "Someone was being abusive." },
+        "expect": [{ "method": "sendMessage", "payload": { "text": "Reports aren’t set up yet. Please try again later." } }]
       }
     ]
   }
